@@ -3,7 +3,7 @@
     <div class="flex items-center justify-center">
       <div class="loader justify-center" v-if="loading"></div>
     </div>
-    <section class="grid grid-cols-1 md:grid-cols-3">
+    <section class="grid grid-cols-1 md:grid-cols-4">
       <div v-for="image in images" :key="image.id">
         <img
           class="p-2 h-48 w-full object-cover scale-95 hover:scale-100 hover:cursor-pointer transition-transform duration-300 ease-in"
