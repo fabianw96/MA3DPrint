@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply m-4 bg-slate-800;
+}
+
+.tbutton {
+  @apply rounded-lg text-slate-400 px-2 py-1 border-2 border-slate-400;
+}
