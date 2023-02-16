@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div class="flex items-center justify-center">
+    <!-- Loader, only shown when getting data from the DB -->
+    <section class="flex items-center justify-center">
       <div class="loader justify-center" v-if="loading"></div>
-    </div>
-    <section class="grid grid-cols-1 md:grid-cols-4">
+    </section>
+    <!-- display image gallery with Click event handler to open modal -->
+    <section class="grid grid-cols-1 md:grid-cols-5">
       <div v-for="image in images" :key="image.id">
         <img
           class="p-2 h-48 w-full object-cover scale-95 hover:scale-100 hover:cursor-pointer transition-transform duration-300 ease-in"
@@ -11,10 +13,13 @@
           @click="openModal(image.id)"
         />
       </div>
+      <!-- Custom ModalComponent that displays the clicked image -->
       <ModalComponent
         :image="currentImage"
         v-if="isModalOpen"
         @close="isModalOpen = false"
+        @prev="openModal(currentImage.id - 1)"
+        @next="openModal(currentImage.id + 1)"
         class="transition-all duration-500 ease-in-out"
       />
     </section>
@@ -28,6 +33,7 @@ const isModalOpen = ref(false);
 const currentImage = ref(null);
 const images = ref([]);
 
+// Get all images from the supabase DB
 const getImages = async () => {
   loading.value = true;
   const { data, error } = await supabase.from('images').select();
@@ -40,12 +46,14 @@ const getImages = async () => {
   }
 };
 
+// Open modal and set currentImage to the clicked image
 const openModal = (id) => {
   isModalOpen.value = true;
   currentImage.value = images.value.find((image) => image.id === id);
   console.log(currentImage.value);
 };
 
+// Get images on page load
 onMounted(() => {
   getImages();
 });
