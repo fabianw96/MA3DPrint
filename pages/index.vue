@@ -31,6 +31,7 @@ const supabase = useSupabaseClient();
 const loading = ref(false);
 const isModalOpen = ref(false);
 const currentImage = ref(null);
+const lastImage = ref(null);
 const images = ref([]);
 
 // Get all images from the supabase DB
@@ -47,9 +48,21 @@ const getImages = async () => {
 };
 
 // Open modal and set currentImage to the clicked image
+// If the clicked image is the first or last image, set currentImage to the first or last image
 const openModal = (id) => {
   isModalOpen.value = true;
+  if (currentImage.value != null) {
+    lastImage.value = currentImage.value;
+  }
   currentImage.value = images.value.find((image) => image.id === id);
+  if (
+    currentImage.value === undefined &&
+    lastImage.value === images.value.length
+  ) {
+    currentImage.value = images.value[images.value.length - 1];
+  } else if (currentImage.value === undefined && lastImage.value != 0) {
+    currentImage.value = images.value[0];
+  }
   console.log(currentImage.value);
 };
 

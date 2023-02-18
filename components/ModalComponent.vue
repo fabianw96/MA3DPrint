@@ -18,7 +18,7 @@
       </div>
 
       <div>
-        <div name="footer">
+        <div name="footer" class="flex justify-around">
           <!-- Forward and Backwards button, selects next or previous image -->
           <button
             class="float-left tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
@@ -40,7 +40,13 @@
             </svg>
           </button>
           <button
-            class="float-right tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
+            class="tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
+            @click.prevent="$emit('close')"
+          >
+            Close
+          </button>
+          <button
+            class="tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
             @click="$emit('next')"
           >
             <svg
@@ -57,12 +63,6 @@
               <polyline points="7 18 13 12 7 6"></polyline>
               <path d="M17 6v12"></path>
             </svg>
-          </button>
-          <button
-            class="float-right tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
-            @click.prevent="$emit('close')"
-          >
-            OK
           </button>
         </div>
       </div>
