@@ -42,7 +42,7 @@ const getImages = async () => {
     console.log(error);
   } else {
     images.value = data;
-    console.log(images.value);
+    //console.log(images.value);
     loading.value = false;
   }
 };
@@ -51,19 +51,26 @@ const getImages = async () => {
 // If the clicked image is the first or last image, set currentImage to the first or last image
 const openModal = (id) => {
   isModalOpen.value = true;
+
   if (currentImage.value != null) {
     lastImage.value = currentImage.value;
   }
   currentImage.value = images.value.find((image) => image.id === id);
+
+
   if (
     currentImage.value === undefined &&
-    lastImage.value === images.value.length
+    lastImage.value.id === 1
   ) {
     currentImage.value = images.value[images.value.length - 1];
-  } else if (currentImage.value === undefined && lastImage.value != 0) {
+    console.log('goto last image');
+  } else if (
+      currentImage.value === undefined &&
+      lastImage.value.id !== 1
+  ) {
     currentImage.value = images.value[0];
+    console.log('goto first image');
   }
-  console.log(currentImage.value);
 };
 
 // Get images on page load
