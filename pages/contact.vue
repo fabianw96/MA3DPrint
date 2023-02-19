@@ -1,7 +1,7 @@
 <template>
-  <div></div>
+  <contact-form />
 </template>
 
-<script setup lang="ts"></script>
+<script setup></script>
 
 <style scoped></style>

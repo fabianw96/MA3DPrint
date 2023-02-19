@@ -2,7 +2,8 @@
   <div>
     <section class="flex gap-x-4 justify-around m-4">
       <NuxtLink class="btn" to="/">Home</NuxtLink>
-      <NuxtLink class="btn" to="/about">About</NuxtLink>
+      <NuxtLink class="btn" to="/contact">Kontakt</NuxtLink>
+
     </section>
 
     <slot />
@@ -22,9 +23,11 @@
               >Impressum</NuxtLink
             >
           </li>
-          <li>
-            <NuxtLink to="/contact" class="hover:underline">Kontakt</NuxtLink>
-          </li>
+<!--          <li>-->
+<!--            <NuxtLink to="/datenschutz" class="mr-4 hover:underline md:mr-6"-->
+<!--              >Datenschutz</NuxtLink-->
+<!--            >-->
+<!--          </li>-->
         </ul>
       </footer>
     </section>
@@ -41,7 +44,7 @@
   text-decoration: none;
   padding: 1em 1em;
   display: inline-block;
-  border-radius: 6em;
+  border-radius: 6px;
   transition: all 0.2s;
   border: none;
   font-family: inherit;
@@ -64,7 +67,7 @@
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 6px;
   position: absolute;
   top: 0;
   left: 0;

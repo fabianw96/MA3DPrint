@@ -6,7 +6,7 @@
       class="md:w-3/6 m-auto bg-slate-800 p-5 shadow-md transition-all 0.3s ease-in overflow-hidden"
     >
       <div class="my-5">
-        <div name="body">
+        <div>
           <NuxtLink :to="image.uri" target="_blank">
             <img
               :src="image.uri"
@@ -18,12 +18,9 @@
       </div>
 
       <div>
-        <div name="footer" class="flex justify-around">
+        <div class="flex justify-around">
           <!-- Forward and Backwards button, selects next or previous image -->
-          <button
-            class="float-left tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
-            @click="$emit('prev')"
-          >
+          <button class="float-left tbutton" @click="$emit('prev')">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -39,16 +36,8 @@
               <path d="M7 6v12"></path>
             </svg>
           </button>
-          <button
-            class="tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
-            @click.prevent="$emit('close')"
-          >
-            Close
-          </button>
-          <button
-            class="tbutton hover:bg-slate-400 hover:text-black transition 0.3s ease-in-out"
-            @click="$emit('next')"
-          >
+          <button class="tbutton" @click.prevent="$emit('close')">Close</button>
+          <button class="tbutton" @click="$emit('next')">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -71,18 +60,7 @@
 </template>
 
 <script setup>
-const { image } = defineProps(['image']);
+const { image } = defineProps(["image"]);
 </script>
 
-<style scoped>
-.modal-enter-active,
-.modal-leave-active {
-  transition: all 4.3s;
-}
-
-.modal-enter,
-.modal-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
-</style>
+<style scoped></style>

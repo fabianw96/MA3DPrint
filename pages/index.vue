@@ -8,7 +8,8 @@
     <section class="grid grid-cols-1 md:grid-cols-5">
       <div v-for="image in images" :key="image.id">
         <img
-          class="p-2 h-48 w-full object-cover scale-95 hover:scale-100 hover:cursor-pointer transition-transform duration-300 ease-in"
+          class="rounded-xl p-2 h-48 w-full object-cover scale-95 hover:scale-100 hover:cursor-pointer transition-transform duration-300 ease-in "
+          :alt="image.id"
           :src="image.uri"
           @click="openModal(image.id)"
         />
@@ -63,13 +64,11 @@ const openModal = (id) => {
     lastImage.value.id === 1
   ) {
     currentImage.value = images.value[images.value.length - 1];
-    console.log('goto last image');
   } else if (
       currentImage.value === undefined &&
       lastImage.value.id !== 1
   ) {
     currentImage.value = images.value[0];
-    console.log('goto first image');
   }
 };
 
