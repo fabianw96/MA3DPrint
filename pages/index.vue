@@ -8,7 +8,7 @@
     <section class="grid grid-cols-1 md:grid-cols-5">
       <div v-for="image in images" :key="image.id">
         <img
-          class="rounded-xl p-2 h-48 w-full object-cover scale-95 hover:scale-100 hover:cursor-pointer transition-transform duration-300 ease-in "
+          class="rounded-xl p-2 h-48 w-full object-cover scale-95 hover:scale-100 hover:cursor-pointer transition-transform duration-300 ease-in"
           :alt="image.id"
           :src="image.uri"
           @click="openModal(image.id)"
@@ -38,7 +38,7 @@ const images = ref([]);
 // Get all images from the supabase DB
 const getImages = async () => {
   loading.value = true;
-  const { data, error } = await supabase.from('images').select();
+  const { data, error } = await supabase.from("images").select();
   if (error) {
     console.log(error);
   } else {
@@ -58,16 +58,9 @@ const openModal = (id) => {
   }
   currentImage.value = images.value.find((image) => image.id === id);
 
-
-  if (
-    currentImage.value === undefined &&
-    lastImage.value.id === 1
-  ) {
+  if (currentImage.value === undefined && lastImage.value.id === 1) {
     currentImage.value = images.value[images.value.length - 1];
-  } else if (
-      currentImage.value === undefined &&
-      lastImage.value.id !== 1
-  ) {
+  } else if (currentImage.value === undefined && lastImage.value.id !== 1) {
     currentImage.value = images.value[0];
   }
 };
@@ -89,7 +82,7 @@ onMounted(() => {
 
 .loader::before,
 .loader::after {
-  content: '';
+  content: "";
   border: 7px solid #ccc;
   border-radius: 50%;
   width: inherit;
